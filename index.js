@@ -1,8 +1,11 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { deleteDoc, getFirestore } from "firebase/firestore";
 import { collection, addDoc } from "firebase/firestore";
 import { getDocs } from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
+import { Stats } from "fs";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -48,4 +51,49 @@ async function getAllColection() {
 // addCollection("charger",1500,"out of stock");
 // addCollection("keyboard",2000,"In stock");
 
-getAllColection();
+//getAllColection();
+
+
+//update data
+// const updateref = doc(db,"Product","1eiNtNq9QMPIpSyr5s2j");
+// await updateDoc(updateref, {
+//     status:"out of stock" 
+// });
+
+
+//delete data
+async function deletedocument(id) {
+
+    const deleteref = doc(db,"Product",id);
+    await deleteDoc(deleteref);
+}
+
+// ................................................ secont collection 
+
+async function addCollectionveg(vegname, weight, price) {
+  try {
+    const docRef = await addDoc(collection(db, "vegetables"), {
+      vegname: vegname,
+      weight: weight,
+      price: price
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+}
+
+async function deletedocumentveg(id) {
+
+    const deleteref = doc(db,"vegetables",id);
+    await deleteDoc(deleteref);
+}
+
+
+// addCollectionveg("potato","2kg",150);
+// addCollectionveg("Tomato","3kg",300);
+
+const updateref = doc(db,"Product","1eiNtNq9QMPIpSyr5s2j");
+    await updateDoc(updateref, {
+    status:"out of stock" 
+});
