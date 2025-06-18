@@ -44,8 +44,8 @@ async function getAllColection() {
   });
 }
 
-addCollection("hetset",90000,"In stock");
-addCollection("charger",1500,"out of stock");
-addCollection("keyboard",2000,"In stock");
+// addCollection("hetset",90000,"In stock");
+// addCollection("charger",1500,"out of stock");
+// addCollection("keyboard",2000,"In stock");
 
-//getAllColection();
+getAllColection();
